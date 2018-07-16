@@ -1,0 +1,29 @@
+{{!-- any time you createa  new thing, you need to create a form, as seen below --}}
+
+
+
+<h1>Signup</h1>
+<form action = "/signup" method="post" >
+
+    <label for = "username">Username:</label>
+    {{!-- Ask why we need "name" --}}
+    <input id = "username" type = "text" name = "theUsername">
+    <br>
+    <br>
+
+
+    <label for = "password"> Password:</label>
+{{!-- "thePassword" is used grabbed in  authRoutes.js line 18  --}}
+    <input id = "password" type = "password" name = "thePassword">
+
+    <br>
+    <br>
+
+
+  <button>Submit</button>
+
+</form>
+
+{{#if errorMessage}}
+<div>{{errorMessage}}</div>
+{{/if}}

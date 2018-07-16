@@ -1,0 +1,18 @@
+<h1>All Cities</h1>
+<ul>
+{{#each cities}}
+  
+  <li>{{this.city}}</li>
+  <li>{{this.country}}</li>
+
+
+{{/each}}
+</ul>
+
+
+{{#if user}}
+<div>
+
+      {{user.username}}
+</div>
+{{/if}}

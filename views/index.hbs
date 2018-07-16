@@ -1,2 +1,30 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h2>Login</h2> 
+
+
+<form action = "/login" method = "post">
+
+  <label>Username:</label>
+  <input type = "text" name = "username">
+  <br>
+  <br>
+
+  <label>Password:</label>
+  <input type = "password" name = "password">
+  <br>
+  <br>
+
+
+  <button>Submit</button>
+
+  <br>
+  <br>
+  <button><a href = "/signup">Sign Up</a></button>
+
+
+
+</form>
+
+
+{{#if message}}
+  <div>{{message}}</div>
+{{/if}}
