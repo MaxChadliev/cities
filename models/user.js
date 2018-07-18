@@ -5,7 +5,7 @@ const City = require('./city');
 const userSchema = new Schema ({
     username: String,
     password: String,
-    img: String,
+    image   : String,
     placesLived: [{type: Schema.Types.ObjectId, ref: 'City'}],
     // will add after person leaves review
     aboutMe: String,

@@ -100,7 +100,7 @@ app.use(passport.session())
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'On The Move';
 // this middleware sets up user as global variable available anywhere when we are logged in
 app.use ((req, res, next)=>{
   if(req.user){

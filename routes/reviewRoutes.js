@@ -68,25 +68,6 @@ reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
 });
 
 
-// reviewRouter.post('/cities/:id/reviews/delete/:reviewIndex', (req,res,next)=>{
-
-//   const cityId = req.params.id;
-//   const reviewIndex = req.params.review
-//   City.findById(cityId)
-//   .then((theCityThatImEditing)=>{
-//     theCityThatImEditing.reviews.splice(review, 1)
-
-
-//     theCityThatImEditing.save()
-//     .then(()=>{
-//       res.redirect('/cities/'+ cityId)
-//     })
-//     .catch((err)=>{next(err)})
-//   })
-// .catch((err)=>{next(err)})
-
-// })
-
 reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
   const cityId = req.params.cityId;
   Review.findById(req.params.reviewId)
@@ -99,16 +80,38 @@ reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
 
 });
 
-// reviewRouter.get('/cities/:id', (req, res ,next)=>{
-//   City.findById(req.params.id)
-//   .then((theCity)=>{
-//       res.render('eachCity', {city: theCity})
-//   })
-//   .catch((err)=>{
-//     next(err)
-//   })
 
-// });
+reviewRouter.get("/edit", (req, res, next) => {
+  let isLived = false;
+  let places = [];
+  User.findById(req.user._id)
+    .then(foundUser => {
+      if (foundUser.placesLived.length !== 0) {
+        isLived = true;
+        foundUser.placesLived.forEach(onePlace => {
+          places.push(onePlace);
+        });
+      }
+      console.log("blah: ", isLived);
+      res.render("editProfile", { isLived, places });
+    })
+    .catch(err => next(err));
+});
+
+reviewRouter.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
+  const userId = req.params.id;
+  const updates = {
+    aboutMe: req.body.editedAboutMe,
+    image: req.file.url
+  };
+  User.findByIdAndUpdate(userId, updates)
+    .then(updatedUser => {
+      console.log("updated: ", updatedUser);
+      res.redirect(`/users/${userId}`);
+    })
+    .catch(err => next(err));
+});
+
 
 
 

@@ -1,16 +1,19 @@
-<a href = "/cities">View all Cities</a>
+<a href="/cities">View all Cities</a>
 
 
 <h1>{{user.username}}'s Profile</h1>
 {{!-- {{user.img}} --}}
-<label>Username:</label>  {{user.username}}
+<label>Username:</label> {{user.username}}
 <br>
 <label>Places Lived:</label>
 {{#each places}}
-  <a href = "/reviews/{{review._id}}">{{this}}</a>
+<a href="/cities/{{this._id}}/reviews/{{this.reviews}}">{{this.city}}</a>
 
 {{/each}}
 <br>
+<label>Profile Picture: </label>
+<img src="{{user.image}}" height=200px width=300px>
+<br>
 <label>About Me:</label>{{user.aboutMe}}
 <br>
-<a href = "/edit">Edit Profile</a>
+<a href="/edit">Edit Profile</a>

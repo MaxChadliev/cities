@@ -95,7 +95,7 @@ const cityArray =
 
 
 {
-  image: "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj3kvOos6bcAhUwrVkKHTsTDAIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.euruni.edu%2Fen%2FCampuses%2FBarcelona%2FEU-Business-School-Barcelona.html&psig=AOvVaw21hDd3octlkKeYbpuEIFY0&ust=1531926015999453",
+  image: "https://www.barcelona.com/ticketbar/static/Barcelonacom/Classifications/discount-cards/barcelona-card-/BARCELONA-CARD-LONG-1514886363-1518689120.jpg",
   city: "Barcelona",
  country: "Spain",
  population: "5,500,000",

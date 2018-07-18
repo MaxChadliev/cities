@@ -4,7 +4,7 @@ const Review = require('./review')
 
 
 const citySchema = new Schema({
-image: String,
+  image: String,
  city: String,
  country: String,
  population: String,

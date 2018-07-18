@@ -1,20 +1,28 @@
 <h1>All Cities</h1>
-<ul>
-{{#each cities}}
-  <div id = cities>
-  <li><a href = "/cities/{{this._id}}">{{this.city}}</a></li>
-  <li>{{this.image}}</li>
-  </div>
-
-
-{{/each}}
-</ul>
-
 
 {{#if user}}
 <div>
 
-      
-      <a href = "/users/{{user._id}}">{{user.username}}</a>
+
+  <a href="/users/{{user._id}}">{{user.username}}</a>
 </div>
 {{/if}}
+
+
+
+<ul>
+  {{#each cities}}
+  <div id=c ities>
+    <li>
+      <a href="/cities/{{this._id}}">{{this.city}}</a>
+    </li>
+    <li>
+      <img src="{{this.image}}" height=500px width=1000px>
+    </li>
+  </div>
+
+
+  {{/each}}
+</ul>
+
+
