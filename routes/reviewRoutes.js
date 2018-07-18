@@ -81,40 +81,70 @@ reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
 });
 
 
-reviewRouter.get("/edit", (req, res, next) => {
-  let isLived = false;
-  let places = [];
-  User.findById(req.user._id)
-    .then(foundUser => {
-      if (foundUser.placesLived.length !== 0) {
-        isLived = true;
-        foundUser.placesLived.forEach(onePlace => {
-          places.push(onePlace);
-        });
-      }
-      console.log("blah: ", isLived);
-      res.render("editProfile", { isLived, places });
-    })
-    .catch(err => next(err));
-});
+// reviewRouter.get("/edit", (req, res, next) => {
+//   let isLived = false;
+//   let places = [];
+//   User.findById(req.user._id)
+//     .then(foundUser => {
+//       if (foundUser.placesLived.length !== 0) {
+//         isLived = true;
+//         foundUser.placesLived.forEach(onePlace => {
+//           places.push(onePlace);
+//         });
+//       }
+//       console.log("blah: ", isLived);
+//       res.render("editProfile", { isLived, places });
+//     })
+//     .catch(err => next(err));
+// });
 
-reviewRouter.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
-  const userId = req.params.id;
-  const updates = {
-    aboutMe: req.body.editedAboutMe,
-    image: req.file.url
-  };
-  User.findByIdAndUpdate(userId, updates)
-    .then(updatedUser => {
-      console.log("updated: ", updatedUser);
-      res.redirect(`/users/${userId}`);
-    })
-    .catch(err => next(err));
-});
-
-
+// reviewRouter.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
+//   const userId = req.params.id;
+//   const updates = {
+//     aboutMe: req.body.editedAboutMe,
+//     image: req.file.url
+//   };
+//   User.findByIdAndUpdate(userId, updates)
+//     .then(updatedUser => {
+//       console.log("updated: ", updatedUser);
+//       res.redirect(`/users/${userId}`);
+//     })
+//     .catch(err => next(err));
+// });
 
 
+
+// reviewRouter.get('/movies/edit/:movieId', (req,res,next)=> {
+//   const id = req.params.movieId;
+//   // console.log("id is: ", id);
+//   Movie.findById(id)
+//   .then(oneMovie =>{
+//     // console.log('is this one movie: ', oneMovie);
+//     // we are passing oneMovie into the view as "movie", which helps us to pre-fill the form 
+//     // also this means that we have whole movie object available in our view
+//     res.render('movies/edit-movie', {movie: oneMovie})
+//   })
+//   .catch(err => console.log('Error while updating movie: ', err))
+// })
+
+
+// // post route to pick up the changes and send it to DB
+// reviewRouter.post('/movies/edit/:id', (req,res,next)=>{
+//   const movieId = req.params.id;
+//   const editedMovie = {
+//     title: req.body.editedTitle,
+//     genre: req.body.editedGenre,
+//     plot: req.body.editedPlot
+//   }
+
+//   // find by id and update expects two arguments to be passed.
+//   // id of the movie and changes taht we save din variable editedMvovie
+//   Movie.findByIdAndUpdate(movieId, editedMovie)
+//   .then( () =>{
+//     res.redirect(`/movies/${movieId}`);
+//   })
+//   .catch(err => console.log('Error while saving the changes after editing: ', err))
+// })
 
 
 
