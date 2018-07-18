@@ -1,9 +1,10 @@
 <h1>All Cities</h1>
 <ul>
 {{#each cities}}
-  
-  <li>{{this.city}}</li>
-  <li>{{this.country}}</li>
+  <div id = cities>
+  <li><a href = "/cities/{{this._id}}">{{this.city}}</a></li>
+  <li>{{this.image}}</li>
+  </div>
 
 
 {{/each}}
@@ -13,6 +14,7 @@
 {{#if user}}
 <div>
 
-      {{user.username}}
+      
+      <a href = "/users/{{user._id}}">{{user.username}}</a>
 </div>
 {{/if}}

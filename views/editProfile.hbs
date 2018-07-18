@@ -1,15 +1,18 @@
-<h1>YO</h1>
+<h1>Edit your Profile</h1>
 
-<form action = "/edit" method = "post">
-
-
-{{#if user}}
-<div>
-
-      {{user.username}}
-</div>
-{{/if}}
-
-
+<form action = "/edit/{{user._id}}" method = "post">
+    <label>Username:</label>  {{user.username}}
+    <br>
+    Img: Upload
+    <br>
+    
+    <br>
+     <label for = "aboutMe">About Me</label>
+    <input type = "text" name="editedAboutMe"  value ="{{user.aboutMe}}">
+    <button type="submit">Save changes</button>
 </form>
+
+
+
+{{!-- <a href ="/cities">Save Profile</a> --}}
 

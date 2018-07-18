@@ -1,5 +1,16 @@
-{{user.username}}
-<h1>Hello</h1>
-{{user.img}}
-{{user.placesLived}}
-{{user.aboutMe}}
+<a href = "/cities">View all Cities</a>
+
+
+<h1>{{user.username}}'s Profile</h1>
+{{!-- {{user.img}} --}}
+<label>Username:</label>  {{user.username}}
+<br>
+<label>Places Lived:</label>
+{{#each places}}
+  <a href = "/reviews/{{review._id}}">{{this}}</a>
+
+{{/each}}
+<br>
+<label>About Me:</label>{{user.aboutMe}}
+<br>
+<a href = "/edit">Edit Profile</a>

@@ -4,16 +4,18 @@ const Review = require('./review')
 
 
 const citySchema = new Schema({
+image: String,
  city: String,
  country: String,
- image: String,
+ population: String,
  shortSummary: String,
  averageRent: String,
  averageAirbnb: String,
- publicTransportation: String,
  climate: String,
- reviews: [{type:String, ref: "Review"}],
-
+ reviews: [{type: Schema.Types.ObjectId, ref: "Review"}],
+},
+{
+  usePushEach: true
 });
 
 const City = mongoose.model("City", citySchema);

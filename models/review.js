@@ -4,14 +4,16 @@ const Schema   = mongoose.Schema;
 
 
 const reviewSchema = new Schema({
-  reviewer: [{type:String,  ref: "User"}],
-  livedVisited: {type: String, required: true},
+  reviewer: {type:Schema.Types.ObjectId,  ref: "User"},
+  lived: {type: Boolean, required: true},
+  rating: [String],
   food: [String],
   sights: [String],
   nightlife: [String],
-  social: [String],
   comments: String,
-
+},
+{
+  usePushEach: true
 });
 
 const Review = mongoose.model("Review", reviewSchema);

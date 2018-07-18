@@ -6,17 +6,18 @@ const passport = require('passport')
 
 userRouter.get('/login',(req,res,next)=>{
 
-  res.render('index', {message: req.flash('error')});
+  res.render('/cities', {message: req.flash('error')});
 
 })
 
-
 userRouter.post("/login", passport.authenticate("local", {
-  successRedirect: "/homePage",
+  successRedirect: "/cities",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
+
+
 
 userRouter.get('/logout', (req,res,next)=>{
   req.logout();
@@ -65,11 +66,10 @@ userRouter.post('/signup', (req,res,next)=>{
 })
 })
 
-userRouter.get('/edit',(req,res,next)=>{
 
-  res.render('editProfile');
 
-})
+
+
 
 module.exports = userRouter;
 
