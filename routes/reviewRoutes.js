@@ -122,16 +122,16 @@ reviewRouter.get('/reviews/:reviewId/edit', (req,res,next)=> {
     // console.log('is this one movie: ', oneMovie);
     // we are passing oneMovie into the view as "movie", which helps us to pre-fill the form 
     // also this means that we have whole movie object available in our view
-    res.render('editProfile', {city: oneCity})
+    res.render('editedReview', {review: oneReview})
   })
   .catch(err => console.log('Error while updating movie: ', err))
 })
 
 
-// post route to pick up the changes and send it to DB
-reviewRouter.post('/movies/edit/:id', (req,res,next)=>{
-  const movieId = req.params.id;
-  const editedMovie = {
+// // post route to pick up the changes and send it to DB
+reviewRouter.post('/reviews/reviewId/edit', (req,res,next)=>{
+  const reviewId = req.params.reviewId;
+  const editedReview = {
     title: req.body.editedTitle,
     genre: req.body.editedGenre,
     plot: req.body.editedPlot
