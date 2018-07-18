@@ -114,37 +114,37 @@ reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
 
 
 
-// reviewRouter.get('/movies/edit/:movieId', (req,res,next)=> {
-//   const id = req.params.movieId;
-//   // console.log("id is: ", id);
-//   Movie.findById(id)
-//   .then(oneMovie =>{
-//     // console.log('is this one movie: ', oneMovie);
-//     // we are passing oneMovie into the view as "movie", which helps us to pre-fill the form 
-//     // also this means that we have whole movie object available in our view
-//     res.render('movies/edit-movie', {movie: oneMovie})
-//   })
-//   .catch(err => console.log('Error while updating movie: ', err))
-// })
+reviewRouter.get('/reviews/:reviewId/edit', (req,res,next)=> {
+  const reviewId = req.params.reviewId;
+  // console.log("id is: ", id);
+  Review.findById(reviewId)
+  .then(oneReview =>{
+    // console.log('is this one movie: ', oneMovie);
+    // we are passing oneMovie into the view as "movie", which helps us to pre-fill the form 
+    // also this means that we have whole movie object available in our view
+    res.render('editProfile', {city: oneCity})
+  })
+  .catch(err => console.log('Error while updating movie: ', err))
+})
 
 
-// // post route to pick up the changes and send it to DB
-// reviewRouter.post('/movies/edit/:id', (req,res,next)=>{
-//   const movieId = req.params.id;
-//   const editedMovie = {
-//     title: req.body.editedTitle,
-//     genre: req.body.editedGenre,
-//     plot: req.body.editedPlot
-//   }
+// post route to pick up the changes and send it to DB
+reviewRouter.post('/movies/edit/:id', (req,res,next)=>{
+  const movieId = req.params.id;
+  const editedMovie = {
+    title: req.body.editedTitle,
+    genre: req.body.editedGenre,
+    plot: req.body.editedPlot
+  }
 
-//   // find by id and update expects two arguments to be passed.
-//   // id of the movie and changes taht we save din variable editedMvovie
-//   Movie.findByIdAndUpdate(movieId, editedMovie)
-//   .then( () =>{
-//     res.redirect(`/movies/${movieId}`);
-//   })
-//   .catch(err => console.log('Error while saving the changes after editing: ', err))
-// })
+  // find by id and update expects two arguments to be passed.
+  // id of the movie and changes taht we save din variable editedMvovie
+  Movie.findByIdAndUpdate(movieId, editedMovie)
+  .then( () =>{
+    res.redirect(`/movies/${movieId}`);
+  })
+  .catch(err => console.log('Error while saving the changes after editing: ', err))
+})
 
 
 
