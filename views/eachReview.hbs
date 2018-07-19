@@ -15,9 +15,11 @@
 {{review.comments}}
 <br>
 <a href = "/reviews/{{review._id}}/edit">Edit Review</a>
-<a href = "/reviews/{{this._id}}">Delete Review</a>
+
+<form action="/cities/{{cityId}}/reviews/{{review._id}}/delete" method="post">
+      <button> Delete this review</button>
 
 
-<a href = "/cities/{{cityId}}">goBack</a>
+<a href = "/cities/{{cityId}}">Go Back</a>
 {{!--  --}}
 

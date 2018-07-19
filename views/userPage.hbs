@@ -6,13 +6,13 @@
 <label>Username:</label> {{user.username}}
 <br>
 <label>Places Lived:</label>
-{{#each places}}
-<a href="/cities/{{this._id}}/reviews/{{this.reviews}}">{{this.city}}</a>
+{{#each user.placesLived}}
+<a href="/cities/{{this._id}}/">{{this.city}}</a>
 
 {{/each}}
 <br>
 <label>Profile Picture: </label>
-<img src="{{user.image}}" height=200px width=300px>
+<img src="{{user.image}}" height=200px width=300px alt = "no profile pic">
 <br>
 <label>About Me:</label>{{user.aboutMe}}
 <br>

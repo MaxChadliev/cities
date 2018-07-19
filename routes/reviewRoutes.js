@@ -16,6 +16,8 @@ reviewRouter.get('/cities/:id/reviews/new', (req, res ,next)=>{
 
 });
 
+
+
 reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
 
   const cityId = req.params.id;
@@ -32,11 +34,24 @@ reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
 
   Review.create(newReview)
   .then( theReview => {
+    let pushit = true;
     console.log('just visited: ', theReview)
 
     if(theReview.lived === true){
       console.log('???????????')
-      req.user.placesLived.push(cityId);
+
+
+     req.user.placesLived.forEach(function (place) {
+        if(place.equals(cityId)){
+          pushit = false;
+        }
+      });
+      
+      
+      if(pushit){
+        req.user.placesLived.push(cityId);
+      }
+
       req.user.save()
       .then( theUser => {
         console.log('saved: ', theUser)
@@ -70,6 +85,9 @@ reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
 
 reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
   const cityId = req.params.cityId;
+
+
+  
   Review.findById(req.params.reviewId)
   .then((theReview)=>{
       res.render('eachReview', {review: theReview, cityId: cityId})
@@ -80,37 +98,6 @@ reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
 
 });
 
-
-// reviewRouter.get("/edit", (req, res, next) => {
-//   let isLived = false;
-//   let places = [];
-//   User.findById(req.user._id)
-//     .then(foundUser => {
-//       if (foundUser.placesLived.length !== 0) {
-//         isLived = true;
-//         foundUser.placesLived.forEach(onePlace => {
-//           places.push(onePlace);
-//         });
-//       }
-//       console.log("blah: ", isLived);
-//       res.render("editProfile", { isLived, places });
-//     })
-//     .catch(err => next(err));
-// });
-
-// reviewRouter.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
-//   const userId = req.params.id;
-//   const updates = {
-//     aboutMe: req.body.editedAboutMe,
-//     image: req.file.url
-//   };
-//   User.findByIdAndUpdate(userId, updates)
-//     .then(updatedUser => {
-//       console.log("updated: ", updatedUser);
-//       res.redirect(`/users/${userId}`);
-//     })
-//     .catch(err => next(err));
-// });
 
 
 
@@ -129,25 +116,46 @@ reviewRouter.get('/reviews/:reviewId/edit', (req,res,next)=> {
 
 
 // // post route to pick up the changes and send it to DB
-reviewRouter.post('/reviews/reviewId/edit', (req,res,next)=>{
+reviewRouter.post('/reviews/:reviewId/edit', (req,res,next)=>{
   const reviewId = req.params.reviewId;
   const editedReview = {
-    title: req.body.editedTitle,
-    genre: req.body.editedGenre,
-    plot: req.body.editedPlot
+   rating: req.body.editedRating,
+   food: req.body.editedFood,
+   sights: req.body.editedSights,
+   nightlife: req.body.editedNightlife,
+   comments: req.body.editedComments
+
   }
 
-  // find by id and update expects two arguments to be passed.
-  // id of the movie and changes taht we save din variable editedMvovie
-  Movie.findByIdAndUpdate(movieId, editedMovie)
+  Review.findByIdAndUpdate(reviewId, editedReview)
   .then( () =>{
-    res.redirect(`/movies/${movieId}`);
+    res.redirect(`/cities`);
   })
   .catch(err => console.log('Error while saving the changes after editing: ', err))
 })
 
 
 
+reviewRouter.post('/cities/:id/reviews/:id/delete', (req,res,next)=>{
+
+  const cityId = req.params.id;
+  const reviewId = req.params.id;
+  const reviewIndex = req.params.reviewIndex;
+  City.findById(cityId)
+  .then((theCityThatImEditing)=>{
+    console.log("=========================")
+    Review.findByIdAndRemove(reviewId)
+    theCityThatImEditing.save()
+    .then(()=>{
+      res.redirect('/cities/'+ cityId)
+    })
+    .catch((err)=>{next(err)})
+  })
+.catch((err)=>{next(err)})
+
+
+
+})
 
 
 

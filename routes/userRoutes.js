@@ -8,19 +8,13 @@ const uploadCloud = require("../config/cloudinary");
 /* GET home page */
 router.get("/users/:userId", (req, res, next) => {
   const userId = req.params.userId;
-  User.findById(userId).then(theUser => {
-    let places = [];
-    theUser.placesLived.forEach(onePlaceId => {
-      City.findById(onePlaceId)
-        .then(foundCity => {
-          places.push(foundCity);
-        })
-        .catch(err => next(err));
-    });
-    setTimeout(() => {
-      res.render("userPage", { user: theUser, places: places });
-    }, 50);
-  });
+  let uniqueplaces = [];
+  User.findById(userId)
+  .populate('placesLived')
+  .then(theUser => {
+          res.render("userPage", { user: theUser}); 
+      })
+      .catch(err => next(err));
 });
 
 router.get("/edit", (req, res, next) => {
@@ -44,8 +38,10 @@ router.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
   const userId = req.params.id;
   const updates = {
     aboutMe: req.body.editedAboutMe,
-    image: req.file.url
   };
+  if(req.file !== undefined){
+    updates.image = req.file.url
+  }
   User.findByIdAndUpdate(userId, updates)
     .then(updatedUser => {
       console.log("updated: ", updatedUser);

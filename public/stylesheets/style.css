@@ -7,8 +7,12 @@ a {
 
 #homepage {
   background-color: lightblue;
-  height: 200px;
+  height: 100%;
+  width: 100%;
   text-align: center; }
+
+#homepage button {
+  width: 100px; }
 
 #cities {
   background-color: lightcyan; }
