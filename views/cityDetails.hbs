@@ -33,7 +33,7 @@
     <label><b>User Reviews:</b></label>
     <ul>
       {{#each reviews}}
-        <li>{{this.realReviewer}}  <a href = "/cities/{{../city._id}}/reviews/{{this.id}}"> {{#if this.lived}}Lived{{/if}}{{#unless this.lived}}Visited{{/unless}}</a> here and gave it a {{this.rating}}/10</li>
+        <li>{{this.realReviewer}} </a> <a href = "/cities/{{../city._id}}/reviews/{{this.id}}"> {{#if this.lived}}Lived{{/if}}{{#unless this.lived}}Visited{{/unless}}</a> here and gave it a {{this.rating}}/10</li>
       {{/each}}
   <button class = "btn btn-primary" id = "homebutton"><a href = "/cities/{{city._id}}/reviews/new"> Add a Review</a> </button>
     </ul>
