@@ -21,7 +21,7 @@ userRouter.post("/login", passport.authenticate("local", {
 
 userRouter.get('/logout', (req,res,next)=>{
   req.logout();
-  res.redirect('login')
+  res.redirect('/')
 });
 
 userRouter.get('/signup',(req,res,next)=>{

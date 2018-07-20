@@ -1,19 +1,39 @@
-<a href="/cities">View all Cities</a>
+{{#if user}}
 
+<nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+  <a class="navbar-brand" id = "navbarTitle" >On The Move</a>
+  <a href = "/cities" class = "navbarCities">All Cities</a>
+  <form class="form-inline">
+  <a class="navbar-brand" id = "navbarName" href = "/users/{{user._id}}">{{user.username}}</a>
+  </form>
+        <a class="navbar-brand" id = "navbarName" href = "/logout">Logout</a>
 
-<h1>{{user.username}}'s Profile</h1>
+</nav>
+{{/if}}
+
+<div class="cityDetails">
+  <div class="detailsOfTheCity">
+
+<h1><b>{{user.username}}'s Profile</b></h1>
 {{!-- {{user.img}} --}}
-<label>Username:</label> {{user.username}}
+<label><b>Username:</b></label> {{user.username}}
 <br>
-<label>Places Lived:</label>
+<label><b>Places Lived:</b></label>
 {{#each user.placesLived}}
 <a href="/cities/{{this._id}}/">{{this.city}}</a>
 
 {{/each}}
 <br>
-<label>Profile Picture: </label>
-<img src="{{user.image}}" height=200px width=300px alt = "no profile pic">
+<label><b>Profile Picture:</b> </label>
+<img class = "profpic" src="{{user.image}}" height=200px width=300px >
 <br>
-<label>About Me:</label>{{user.aboutMe}}
 <br>
-<a href="/edit">Edit Profile</a>
+<br>
+<label><b>About Me: </b></label>  {{user.aboutMe}}
+<br>
+<br>
+<br>
+<br>
+<button class = "btn btn-primary" id = "homebutton"><a href="/edit">Edit Profile</a></button>
+</div>
+</div>

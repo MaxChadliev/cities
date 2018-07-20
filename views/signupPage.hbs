@@ -1,28 +1,30 @@
+<img src = "http://desktopgraphy.com/wp-content/uploads/2016/07/photography-road-dark-city-light-image-1920x1080.jpg" id = "bg" alt = "">
 
+<div class = "container-fluid" id = "homepage">
+  <div class = "row">
 
-
+<div class = "col-4"></div>
+<div class = "col-4">
 <h1>Signup</h1>
-<form action = "/signup" method="post" >
 
-    <label for = "username">Username:</label>
-    {{!-- Ask why we need "name" --}}
-    <input id = "username" type = "text" name = "theUsername">
-    <br>
-    <br>
-
-
-    <label for = "password"> Password:</label>
-{{!-- "thePassword" is used grabbed in  authRoutes.js line 18  --}}
-    <input id = "password" type = "password" name = "thePassword">
-
-    <br>
-    <br>
-
-
-  <button>Submit</button>
-
+<form action = "/signup" method = "post">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" id="username" name = "theUsername" placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name = "thePassword" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary" id = "homebutton">Submit</button>
+  </div>
 </form>
 
+<div class = "col-4" id = "error">
 {{#if errorMessage}}
-<div>{{errorMessage}}</div>
+{{errorMessage}}
 {{/if}}
+</div>
+
+</div>
+</div>

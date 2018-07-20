@@ -1,28 +1,45 @@
-<h1>All Cities</h1>
-
+<div class = "alll">
 {{#if user}}
+
+<nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+  <a class="navbar-brand" id = "navbarTitle">On The Move</a>
+  <a href = "/cities" class = "navbarCities">All Cities</a>
+  <form class="form-inline">
+  <a class="navbar-brand" id = "navbarName" href = "/users/{{user._id}}">{{user.username}}</a>
+  </form>
+      <a class="navbar-brand" id = "navbarName" href = "/logout">Logout</a>
+
+</nav>
+{{/if}}
+
+<div class = "citiesTitle">
+<h1> Cities</h1>
+
+</div>
+
+{{!-- {{#if user}}
 <div>
 
 
   <a href="/users/{{user._id}}">{{user.username}}</a>
 </div>
-{{/if}}
+{{/if}} --}}
 
 
 
-<ul>
+<ul class="listOfCities">
   {{#each cities}}
-  <div id=c ities>
-    <li>
-      <a href="/cities/{{this._id}}">{{this.city}}</a>
+  <div id=cities>
+    <li class="cityNames">
+      <h3>{{this.city}}</h3>
     </li>
     <li>
-      <img src="{{this.image}}" height=500px width=1000px>
+      <a href="/cities/{{this._id}}"><img class="cityImages" src="{{this.image}}"></a>
     </li>
   </div>
 
 
   {{/each}}
 </ul>
-
+</div>
 

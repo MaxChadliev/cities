@@ -35,23 +35,17 @@ reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
   Review.create(newReview)
   .then( theReview => {
     let pushit = true;
-    console.log('just visited: ', theReview)
 
     if(theReview.lived === true){
-      console.log('???????????')
-
 
      req.user.placesLived.forEach(function (place) {
         if(place.equals(cityId)){
           pushit = false;
         }
-      });
-      
-      
+      }); 
       if(pushit){
         req.user.placesLived.push(cityId);
       }
-
       req.user.save()
       .then( theUser => {
         console.log('saved: ', theUser)
@@ -79,18 +73,22 @@ reviewRouter.post('/cities/:id/reviews/create', (req,res,next)=>{
     }
   } )
   .catch( err => next(err) )
-
 });
 
 
 reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
   const cityId = req.params.cityId;
 
+  let isReviewer = false;
 
-  
+
   Review.findById(req.params.reviewId)
   .then((theReview)=>{
-      res.render('eachReview', {review: theReview, cityId: cityId})
+    console.log('user: ', req.user._id, 'reviewer: ',theReview.reviewer )
+    if((req.user._id).equals(theReview.reviewer) ){
+      isReviewer = true;
+    }
+      res.render('eachReview', {review: theReview, cityId: cityId, isReviewer})
   })
   .catch((err)=>{
     next(err)
@@ -136,22 +134,40 @@ reviewRouter.post('/reviews/:reviewId/edit', (req,res,next)=>{
 
 
 
-reviewRouter.post('/cities/:id/reviews/:id/delete', (req,res,next)=>{
+reviewRouter.post('/cities/:cityId/reviews/:reviewId/delete', (req,res,next)=>{
 
-  const cityId = req.params.id;
-  const reviewId = req.params.id;
-  const reviewIndex = req.params.reviewIndex;
+  const cityId = req.params.cityId;
+  const reviewId = req.params.reviewId
+Review.findByIdAndRemove(reviewId)
+.then(()=>{
   City.findById(cityId)
-  .then((theCityThatImEditing)=>{
-    console.log("=========================")
-    Review.findByIdAndRemove(reviewId)
-    theCityThatImEditing.save()
-    .then(()=>{
+  .then((foundCity)=>{
+    const position = foundCity.reviews.indexOf(reviewId);
+    foundCity.reviews.splice(position, 1);
+    foundCity.save()
+    .then(()=>{ 
       res.redirect('/cities/'+ cityId)
+
+
     })
     .catch((err)=>{next(err)})
   })
+  .catch((err)=>{next(err)})
+})
 .catch((err)=>{next(err)})
+
+
+//   City.findById(cityId)
+//   .then((theCityThatImEditing)=>{
+//     console.log("=========================")
+//     Review.findByIdAndRemove(reviewId)
+//     theCityThatImEditing.save()
+//     .then(()=>{
+//       res.redirect('/cities/'+ cityId)
+//     })
+//     .catch((err)=>{next(err)})
+//   })
+// .catch((err)=>{next(err)})
 
 
 

@@ -1,8 +1,24 @@
+{{#if user}}
+
+<nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+  <a class="navbar-brand" id = "navbarTitle">On The Move</a>
+  <a href = "/cities" class = "navbarCities">All Cities</a>
+  <form class="form-inline">
+  <a class="navbar-brand" id = "navbarName" href = "/users/{{user._id}}">{{user.username}}</a>
+  </form>
+        <a class="navbar-brand" id = "navbarName" href = "/logout">Logout</a>
+
+</nav>
+{{/if}}
+
+
+
+
 <form action = "/cities/{{city._id}}/reviews/create" method = "post">
 
-  <label for = "reviewer">Reviewed by: {{user.username}}</label>
+  <label for = "reviewer"><b>Reviewed by: </b>{{user.username}}</label>
   <br>
-  <label for="">Choose one: </label>
+  <label for=""><b>Choose one:</b> </label>
   <label for="lived">Lived</label>
   <input type="radio" name="lived" id="" value="true">
   <label for="">Visited</label>
@@ -10,29 +26,41 @@
 <br>
   {{!-- example of a label w/o a "for" attribute. cannot click on the words --}}
   {{!-- no id on the textarea because the only purpose of the id is to connect the label to the input, for fancy clicking purposes  --}}
-  <label for="rating">Rate your experience:</label>
-  <input type="number" name="rating" id="">/10
+  <label for="rating"><b>Rate your experience:</b></label>
+  <select class = "form-control" type="number" name="rating" id="review"> 
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+  </select>
   <br>
   <br>
-  <label for = "food">Favorite places to eat</label>
-  <textarea name="food" id="" cols="20" rows="3"></textarea>
+  <label for = "food"><b>List some of your favorite places to eat:</b></label>
+  <textarea class = "form-control" name="food" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
-  <label for = "sights">Any sights to see? </label>
-  <textarea name="sights" id="" cols="20" rows="3"></textarea>
+  <label for = "sights"><b>Any sights worth seeing?</b> </label>
+  <textarea class = "form-control" name="sights" id="review" cols="20" rows="3"></textarea>
   <br>
   <br>
-  <label for "nightlife">Favorite bars/clubs</label>
-  <textarea name="nightlife" id="" cols="20" rows="3"></textarea>
+  <label for "nightlife"><b>Some of your favorite bars/clubs</b></label>
+  <textarea class = "form-control" name="nightlife" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
 
-  <label for "comments">Additional Comments</label>
-  <textarea name="comments" id="" cols="20" rows="3"></textarea>
-  
-  <button type = "submit">Submit</button>
+  <label for "comments"><b>Any Additional Information Worth Sharing?</b></label>
+  <textarea class = "form-control" name="comments" id="review" cols="20" rows="3"></textarea>
+  <br>
+  <br>
+  <button class = "btn btn-primary" id = "homebutton" type = "submit">Submit</button>
 
 
 </form>

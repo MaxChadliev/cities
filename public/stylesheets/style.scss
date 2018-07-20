@@ -1,29 +1,149 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
+
+  padding-top: 75px;
 }
 
-a {
-  color: #00B7FF;
+#review {
+  width: 40%;
 }
 
-#homepage {
-  background-color: lightblue;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  // width: 300px;
-  // margin-top: 200px;
-  // margin-left: 40%;
-  // padding-top: 40px;
+.profpic {
+  border-radius: 5%;
 }
-
-#homepage button {
-  width: 100px;
-
-}
-
 
   #cities {
-    background-color: lightcyan
+    border-radius: 10px
   }
+
+  .btn {
+    width: 100px;
+    text-decoration: none;
+  }
+  .btn-primary a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .link-btn {
+    color: white;
+  }
+
+  .link-btn:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  #error {
+    padding-top: 90px;
+    font-size: 20px;
+  }
+
+// }
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.alll {
+  background-size: cover;
+}
+
+#bd {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  opacity: 0.75;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+#homepage {
+  color: white;
+}
+
+#homebutton {
+  background-color: #4CAF50;
+  border: white 2px;
+  width: 200px;
+  
+}
+
+.navbar #navbarTitle {
+  font-size: 30px;
+}
+
+.navbarCities {
+  margin-left: 500px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar a:hover {
+  text-decoration: none !important ;
+  color: black;
+  
+}
+
+
+
+
+.listOfCities {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  list-style: none;
+  border-radius: 10px;
+
+}
+.cityImages {
+  width: 40vw;
+  height: 40vh;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-right: 100px;
+  margin-top: 20px;
+
+  
+}
+
+.cityNames {
+  display: flex;
+  justify-content: center;
+}
+
+.cityDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 4vh;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.detailsOfTheCity {
+  width: 35vw;
+}
+
+.citiesTitle {
+display: flex;
+justify-content: center;
+padding-bottom: 4vh;
+}
+
+.navbar {
+  background-color: #C0C0C0 !important
+}
+
+#navbarTitle {
+  color: #999966;
+}

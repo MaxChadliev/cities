@@ -1,18 +1,39 @@
-<h1>Edit your Profile</h1>
+<img src = "http://desktopgraphy.com/wp-content/uploads/2016/07/photography-road-dark-city-light-image-1920x1080.jpg" id = "bd" alt = "">
 
+
+<div class = "container-fluid" id = "homepage">
+    <div class = "row">
+        <div class = "col-4"></div>
+
+        <div class = "col-4">
 <form action="/edit/{{user._id}}" method="post" enctype="multipart/form-data">
-    <label>Username:</label> {{user.username}}
-    <br>
-    <input type="file" name="photo">
-    <br>
+<h1>Edit your Profile</h1>
+<br>
 
+<br>
+    <h2>Username: {{user.username}}</h2>
     <br>
-    <label for="aboutMe">About Me</label>
-    <input type="text" name="editedAboutMe" value="{{user.aboutMe}}">
-    <button type="submit">Save changes</button>
+    <br>
+    
+    <input type="file" class = "form-control"name="photo" id = "photoinput">
+    <br>
+<br>
+    <br>
+    
+    <label for="aboutMe"><h3>About Me</h3></label>
+    <br>
+    <textarea class = "form-control" name="editedAboutMe" value="{{user.aboutMe}}" cols="30" rows="5"></textarea>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class = "btn btn-primary" id = "homebutton">Save changes</button>
 </form>
+<div class = "col-4"></div>
+</div>
+
+</div>
+</div>
 
 
 
-{{!--
-<a href="/cities">Save Profile</a> --}}
+

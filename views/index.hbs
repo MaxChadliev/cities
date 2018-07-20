@@ -1,31 +1,30 @@
 {{!-- LOGIN HOMEPAGE --}}
-<div class = "container-fluid">
+<img src = "http://desktopgraphy.com/wp-content/uploads/2016/07/photography-road-dark-city-light-image-1920x1080.jpg" id = "bg" alt = "">
+<div class = "container-fluid" id = "homepage">
   <div class = "row">
-    <div class = "col-4">
-
-    </div>
+    <div class = "col-4"></div>
     <div class = "col-4">
 
    
-<h2>Login</h2> 
+<h1>Login</h1> 
 <form action = "/login" method = "post">
-<div id = "homepage">
-  <label>Username:</label>
-  <input type = "text" name = "username">
-  <br>
-  <br>
+  <div class="form-group">
+    <label for="Username">Username</label>
+    <input type="text" class="form-control" name = "username"  placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="Password">Password</label>
+    <input type="password" class="form-control" name = "password" placeholder="Password">
+  </div>
+ 
 
-  <label>Password:</label>
-  <input type = "password" name = "password">
-  <br>
-  <br>
 
-
-  <button>Submit</button>
+<button class="btn btn-primary" id = "homebutton">Submit</button>
 
   <br>
   <br>
-  <button><a href = "/signup">Sign Up</a></button>
+<button type="button" class="btn btn-primary" id = "homebutton"><a class='link-btn' href = "/signup">Sign Up</a></button>
+
 
 </div>
 

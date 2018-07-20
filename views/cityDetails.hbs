@@ -1,28 +1,50 @@
+{{#if user}}
+
+<nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+  <a class="navbar-brand" id = "navbarTitle">On The Move</a>
+  <a href = "/cities" class = "navbarCities">All Cities</a>
+  <form class="form-inline">
+  <a class="navbar-brand" id = "navbarName" href = "/users/{{user._id}}">{{user.username}}</a>
+  </form>
+      <a class="navbar-brand" id = "navbarName" href = "/logout">Logout</a>
+
+</nav>
+{{/if}}
+
+<div class="cityDetails">
+  <div class="detailsOfTheCity">
+    <label><b>City:</b></label>  {{city.city}}
+    <br>
+    <label><b>Country:</b></label>  {{city.country}}
+    <br>
+    <br>
+    <label><b>Population:</b></label>  {{city.population}}
+    <br>
+    <br>
+    <label><b>Summary:</b></label> {{city.shortSummary}}
+    <br>
+    <br>
+    <label><b>Average Monthly Rent:</b></label>  {{city.averageRent}}
+    <br>
+    <br>
+    <label><b>Average Nightly airBnB:</b></label>  {{city.averageAirbnb}}
+    <br>
+    <br>
+    <label><b>User Reviews:</b></label>
+    <ul>
+      {{#each reviews}}
+        <li>{{this.realReviewer}}  <a href = "/cities/{{../city._id}}/reviews/{{this.id}}"> {{#if this.lived}}Lived{{/if}}{{#unless this.lived}}Visited{{/unless}}</a> here and gave it a {{this.rating}}/10</li>
+      {{/each}}
+  <button class = "btn btn-primary" id = "homebutton"><a href = "/cities/{{city._id}}/reviews/new"> Add a Review</a> </button>
+    </ul>
+  </div>
+  <div>
+    <img class="cityImages" src="{{city.image}}">
+  </div>
+
+</div>
+<br>
 
 
-<label>City:</label>  {{city.city}}
-<br>
-<label>Country:</label>{{city.country}}
-<br>
-<label>Population:</label>{{city.population}}
-<br>
-<label>Summary:</label>{{city.shortSummary}}
-<br>
-<label>Average Monthly Rent:</label>{{city.averageRent}}
-<br>
-<label>Average Nightly airBnB:</label>{{city.averageAirbnb}}
-<br>
-<label>User Reviews:</label>
-<ul>
-  {{#each reviews}}
-    <li>{{this.realReviewer}} <a href = "/cities/{{../city._id}}/reviews/{{this.id}}"> {{#if this.lived}}Lived{{/if}}{{#unless this.lived}}Visited{{/unless}}</a>,{{this.rating}}/10</li>
-  {{/each}}
-</ul>
 
 <br>
-<a href = "/cities/{{city._id}}/reviews/new">Add a Review</a> 
-
-
-
-<br>
-<a href = "/cities">View all Cities</a>

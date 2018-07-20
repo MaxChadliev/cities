@@ -1,33 +1,39 @@
 <form action = "/reviews/{{review.id}}/edit" method = "post">
-     <label for = "reviewer">Reviewed by: {{user.username}}</label>
+  <label for="rating"><b>Rate your experience:</b></label>
+  <select class = "form-control" type="number" name="rating" id="review"> 
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+  </select>
   <br>
- 
-  {{!-- example of a label w/o a "for" attribute. cannot click on the words --}}
-  {{!-- no id on the textarea because the only purpose of the id is to connect the label to the input, for fancy clicking purposes  --}}
-  <label for="rating">Rate your experience:</label>
-  <input type="number" name="editedRating" id="">/10
   <br>
-  <br>
-  <label for = "food">Favorite places to eat</label>
-  <textarea name="editedFood" id="" cols="20" rows="3"></textarea>
+  <label for = "food"><b>List some of your favorite places to eat:</b></label>
+  <textarea class = "form-control" name="food" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
-  <label for = "sights">Any sights to see? </label>
-  <textarea name="editedSights" id="" cols="20" rows="3"></textarea>
+  <label for = "sights"><b>Any sights worth seeing?</b> </label>
+  <textarea class = "form-control" name="sights" id="review" cols="20" rows="3"></textarea>
   <br>
   <br>
-  <label for "nightlife">Favorite bars/clubs</label>
-  <textarea name="editedNightlife" id="" cols="20" rows="3"></textarea>
+  <label for "nightlife"><b>Some of your favorite bars/clubs</b></label>
+  <textarea class = "form-control" name="nightlife" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
 
-  <label for "comments">Additional Comments</label>
-  <textarea name="comments" id="" cols="20" rows="3"></textarea>
-  
-  <button type = "submit">Submit</button>
-
+  <label for "comments"><b>Any Additional Information Worth Sharing?</b></label>
+  <textarea class = "form-control" name="comments" id="review" cols="20" rows="3"></textarea>
+  <br>
+  <br>
+  <button class = "btn btn-primary" id = "homebutton" type = "submit">Submit</button>
 
   
 
