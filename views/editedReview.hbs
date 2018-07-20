@@ -5,7 +5,7 @@
   <div class="detailsOfTheCity">
 <form action = "/reviews/{{review.id}}/edit" method = "post">
   <label for="rating"><b>Rate your experience:</b></label>
-  <select class = "form-control" type="number" name="rating" id="review"> 
+  <select class = "form-control" type="number" name="editedRating" id="review"> 
     <option>1</option>
     <option>2</option>
     <option>3</option>
@@ -20,28 +20,28 @@
   <br>
   <br>
   <label for = "food"><b>List some of your favorite places to eat:</b></label>
-  <textarea class = "form-control" name="food" id="review" cols="20" rows="3"></textarea>
+  <textarea class = "form-control" name="editedFood" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
   <label for = "sights"><b>Any sights worth seeing?</b> </label>
-  <textarea class = "form-control" name="sights" id="review" cols="20" rows="3"></textarea>
+  <textarea class = "form-control" name="editedSights" id="review" cols="20" rows="3"></textarea>
   <br>
   <br>
   <label for "nightlife"><b>Some of your favorite bars/clubs</b></label>
-  <textarea class = "form-control" name="nightlife" id="review" cols="20" rows="3"></textarea>
+  <textarea class = "form-control" name="editedNightlife" id="review" cols="20" rows="3"></textarea>
 
   <br>
   <br>
 
   <label for "comments"><b>Any Additional Information Worth Sharing?</b></label>
-  <textarea class = "form-control" name="comments" id="review" cols="20" rows="3"></textarea>
+  <textarea class = "form-control" name="editedComments" id="review" cols="20" rows="3"></textarea>
   <br>
   <br>
   <button class = "btn btn-primary" id = "homebutton" type = "submit">Submit</button>
+</form>
 
   
 
-</form>
 </div>
 </div>

@@ -101,6 +101,7 @@ reviewRouter.get('/cities/:cityId/reviews/:reviewId', (req, res ,next)=>{
 
 reviewRouter.get('/reviews/:reviewId/edit', (req,res,next)=> {
   const reviewId = req.params.reviewId;
+  
   // console.log("id is: ", id);
   Review.findById(reviewId)
   .then(oneReview =>{

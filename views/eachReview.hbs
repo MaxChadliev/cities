@@ -21,7 +21,7 @@
 <br>
 <b>Favorite Places to Eat:       </b>   {{review.food}}
 <br>
-<br>
+
 <b>Sights Worth Seeing: </b>{{review.sights}}
 <br>
 <b>Nightlife Worth Exploring: </b>{{review.nightlife}}
@@ -37,6 +37,7 @@
 {{!-- <br> --}}
 <form action="/cities/{{cityId}}/reviews/{{review._id}}/delete" method="post">
       <button class = "btn btn-primary" id = "homebutton"> Delete this review</button>
+</form>      
 {{/if}}
 <br>
 <br>
