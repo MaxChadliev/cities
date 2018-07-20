@@ -110,7 +110,7 @@ body {
   height: 40vh;
   border-radius: 10px;
   margin-bottom: 20px;
-  margin-right: 100px;
+  margin-right: 35px;
   margin-top: 20px;
 
   
@@ -119,6 +119,7 @@ body {
 .cityNames {
   display: flex;
   justify-content: center;
+  padding-right: 20px;
 }
 
 .cityDetails {
@@ -138,6 +139,7 @@ body {
 display: flex;
 justify-content: center;
 padding-bottom: 4vh;
+padding-top: 3vh;
 }
 
 .navbar {

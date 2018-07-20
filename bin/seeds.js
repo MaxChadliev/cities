@@ -3,7 +3,7 @@ const City = require('../models/city')
 
 // these two need each other
 const dbName = 'cities-app';
-mongoose.connect(`mongodb://localhost/${dbName}`, {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
 
 const cityArray = 
