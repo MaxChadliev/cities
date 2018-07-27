@@ -35,8 +35,9 @@ body {
   top: 0;
   left: 0;
   /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%; }
+  max-width: 100%;
+  max-height: 100%; 
+  min-width: 100%;}
 
 .alll {
   background-size: cover; }
@@ -47,8 +48,9 @@ body {
   left: 0;
   opacity: 0.75;
   /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%; }
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%}
 
 #homepage {
   color: white; }
