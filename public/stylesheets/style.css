@@ -31,18 +31,21 @@ body {
   font-size: 20px; }
 
 #bg {
+  min-width: 100%;
+
   position: fixed;
   top: 0;
   left: 0;
   /* Preserve aspet ratio */
   max-width: 100%;
   max-height: 100%; 
-  min-width: 100%;}
+}
 
 .alll {
   background-size: cover; }
 
 #bd {
+  min-width: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -50,7 +53,7 @@ body {
   /* Preserve aspet ratio */
   max-width: 100%;
   min-height: 100%;
-  min-width: 100%}
+  }
 
 #homepage {
   color: white; }
